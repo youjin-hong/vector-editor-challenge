@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import type { PolygonShape } from '@/entities/shape';
 import { COLORS } from '@/shared/config/constants';
 

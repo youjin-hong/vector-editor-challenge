@@ -1,6 +1,6 @@
+import { useState, useEffect, useRef, type JSX } from 'react';
 import { useEditorStore } from '@/app/providers/editorStore';
 import { TOOLBAR_WIDTH, STATUS_BAR_HEIGHT, MODE_LABELS } from '@/shared/config/constants';
-import { useState, useEffect, useRef } from 'react';
 
 export const StatusBar = (): JSX.Element => {
   const mode = useEditorStore((s) => s.mode);

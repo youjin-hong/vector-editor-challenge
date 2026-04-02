@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import { useEditorStore } from '@/app/providers/editorStore';
 import { useKeyboardShortcuts } from '@/features/history';
 import { Toolbar } from '@/widgets/toolbar';

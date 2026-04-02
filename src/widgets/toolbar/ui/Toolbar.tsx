@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import { Circle, Pentagon, Move, Trash2, Undo2, Redo2 } from 'lucide-react';
 import type { EditorMode } from '@/entities/shape';
 import { useEditorStore } from '@/app/providers/editorStore';
@@ -25,7 +26,7 @@ export const Toolbar = (): JSX.Element => {
   return (
     <div className="fixed left-0 top-0 bottom-9 w-14 bg-editor-surface border-r border-editor-border flex flex-col items-center z-10">
       <div className="py-3 px-2 border-b border-editor-border w-full text-center">
-        <span className="text-editor-accent font-bold text-sm tracking-tight">VectoR</span>
+        <span className="text-editor-accent font-bold text-sm tracking-tight">Vector Editor</span>
       </div>
 
       <div className="flex flex-col gap-1 p-1.5 w-full">

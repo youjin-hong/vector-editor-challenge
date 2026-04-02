@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { clickCanvas, switchMode, getModeLabel } from './helpers';
+import { clickCanvas, switchMode } from './helpers';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');

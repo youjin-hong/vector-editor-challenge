@@ -1,34 +1,33 @@
 # AI Prompts
 
-본 프로젝트 개발 시 사용한 AI 도구 및 프롬프트 목록입니다.
+본 프로젝트 개발 과정에서 AI 도구를 부분적으로 활용하였습니다.
 
 ## 사용 도구
 
-- **Claude Code** (Anthropic Claude Opus 4.6) — CLI 기반 AI 코딩 어시스턴트
+- **Claude** (Anthropic) — 설계 방향 논의 및 코드 리뷰
+- **Claude Code** (Anthropic) — 보일러플레이트 생성 및 리팩토링 보조
+- **v0** (Vercel) — 유사 서비스 레퍼런스 기반 UI 디자인 프로토타이핑
 
-## 프롬프트 목록
+## 주요 활용 내역
 
-### 프로젝트 초기 설정
+### 설계 단계
 
-1. 프로젝트 구조(FSD 아키텍처), CLAUDE.md 규칙 파일들, 기본 컴포넌트 스캐폴딩 생성
+1. FSD 아키텍처의 레이어 분리 방식과 레이어 간 import 규칙 검토
+2. Undo/Redo 구현 방식 비교 — 액션을 객체로 감싸는 Command Pattern과 상태 변경을 기록하는 Event Sourcing 중 선택
+3. Zustand 상태 관리를 하나의 스토어로 할지, 기능별로 나눌지(slice 패턴) 장단점 논의
 
-### 핵심 기능 구현
+### 구현 단계
 
-2. Command Pattern 기반 Undo/Redo 히스토리 시스템 구현 (HistoryManager, Command 인터페이스)
-3. Zustand 스토어 설계 및 구현 (EditorState, 모드 전환, 도형 CRUD)
-4. Canvas 인터랙션 훅 구현 (useCanvasInteraction — 모드별 클릭/드래그 핸들링)
-5. 드래그 앤 드롭 훅 구현 (useDragDrop — 델타 기반 이동, 캔버스 클램핑)
-6. SVG 기반 도형 렌더러 구현 (PointRenderer, PolygonRenderer)
-7. Polygon 생성 플로우 구현 (pendingVertices, 미리보기, Complete/Cancel)
-8. 키보드 단축키 훅 구현 (useKeyboardShortcuts)
+4. 클릭한 좌표가 다각형 내부인지 판별하는 Ray Casting 알고리즘 구현 검증
+5. 도형을 드래그할 때 캔버스 밖으로 나가지 않도록 좌표를 제한하는 로직 리뷰
+6. Polygon 생성 시 예외 상황 처리 방향 논의 (꼭짓점 2개 이하로 완성 시도, 생성 도중 모드 전환 등)
 
 ### 테스트
 
-9. 단위 테스트 작성 (HistoryManager, Command 클래스들, geometry 유틸)
-10. 컴포넌트/통합 테스트 작성 (editorStore, Toolbar, Canvas, StatusBar, PointRenderer, PolygonRenderer, useKeyboardShortcuts)
-11. Playwright E2E 테스트 작성 (Point/Polygon 생성, Move, Delete, Undo/Redo, 키보드 단축키, 복합 시나리오)
+7. E2E 테스트 시나리오 설계 및 Playwright에서 DOM 요소를 찾는 방식(data 속성 등) 논의
+8. 어떤 모듈부터 테스트를 작성할지 우선순위 검토
 
 ### 스타일링
 
-12. Tailwind CSS 커스텀 테마 설정 (다크 테마 컬러 토큰, 타이포그래피)
-13. v0 기반 UI 디자인 구현 (Toolbar, StatusBar, 도형 호버/선택 스타일)
+9. 기존 벡터 편집기(Figma, tldraw, Excalidraw 등)를 레퍼런스로 v0에서 UI 초안 생성
+10. 다크 테마 색상 조합 피드백

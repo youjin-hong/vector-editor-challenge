@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, type JSX } from 'react';
 import { useEditorStore } from '@/app/providers/editorStore';
 import { PENDING_VERTEX_RADIUS, COLORS, TOOLBAR_WIDTH, STATUS_BAR_HEIGHT } from '@/shared/config/constants';
 import { useCanvasInteraction } from '../lib/useCanvasInteraction';
@@ -77,7 +77,7 @@ export const Canvas = (): JSX.Element => {
         >
           <GridPattern width={dimensions.width} height={dimensions.height} />
 
-          {/* Crosshair guides */}
+          {/* 십자선 가이드 */}
           {mousePos && (mode === 'point' || mode === 'polygon') && (
             <g opacity={0.15}>
               <line
@@ -101,7 +101,7 @@ export const Canvas = (): JSX.Element => {
             </g>
           )}
 
-          {/* Rendered shapes */}
+          {/* 렌더링된 도형 */}
           {shapes.map((shape) =>
             shape.type === 'point' ? (
               <PointRenderer
@@ -120,10 +120,10 @@ export const Canvas = (): JSX.Element => {
             ),
           )}
 
-          {/* Pending polygon preview */}
+          {/* 생성 중인 다각형 미리보기 */}
           {pendingVertices.length > 0 && (
             <g>
-              {/* Lines between vertices */}
+              {/* 꼭짓점 사이 연결선 */}
               {pendingVertices.length > 1 && (
                 <polyline
                   points={pendingVertices.map((v) => `${v.x},${v.y}`).join(' ')}
@@ -133,7 +133,7 @@ export const Canvas = (): JSX.Element => {
                   strokeDasharray="4 4"
                 />
               )}
-              {/* Preview line to cursor */}
+              {/* 커서까지 미리보기 선 */}
               {mousePos && (
                 <line
                   x1={pendingVertices[pendingVertices.length - 1].x}
@@ -146,7 +146,7 @@ export const Canvas = (): JSX.Element => {
                   opacity={0.5}
                 />
               )}
-              {/* Vertex dots */}
+              {/* 꼭짓점 표시 */}
               {pendingVertices.map((v, i) => (
                 <circle
                   key={i}
