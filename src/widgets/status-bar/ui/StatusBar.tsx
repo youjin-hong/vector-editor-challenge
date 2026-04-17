@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useState, useEffect, useRef, useCallback, type JSX } from 'react';
+=======
+import { useState, useEffect, useRef, type JSX } from 'react';
+>>>>>>> a7fa4881b7f5a72e336bbc860b972c2ebd5be565
 import { useEditorStore } from '@/app/providers/editorStore';
 import { TOOLBAR_WIDTH, STATUS_BAR_HEIGHT, MODE_LABELS } from '@/shared/config/constants';
 

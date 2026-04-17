@@ -1,5 +1,9 @@
 import type { JSX } from 'react';
+<<<<<<< HEAD
 import { Circle, Pentagon, Move, Trash2, Undo2, Redo2, Box, Cloud } from 'lucide-react';
+=======
+import { Circle, Pentagon, Move, Trash2, Undo2, Redo2 } from 'lucide-react';
+>>>>>>> a7fa4881b7f5a72e336bbc860b972c2ebd5be565
 import type { EditorMode } from '@/entities/shape';
 import { useEditorStore } from '@/app/providers/editorStore';
 import { Tooltip } from '@/shared/ui/Tooltip';
@@ -31,6 +35,7 @@ export const Toolbar = (): JSX.Element => {
     <div className="fixed left-0 top-0 bottom-9 w-14 bg-editor-surface border-r border-editor-border flex flex-col items-center z-10">
       <div className="py-3 px-2 border-b border-editor-border w-full text-center">
         <span className="text-editor-accent font-bold text-sm tracking-tight">Vector Editor</span>
+<<<<<<< HEAD
       </div>
 
       {/* 2D/3D 뷰 전환 */}
@@ -49,6 +54,8 @@ export const Toolbar = (): JSX.Element => {
             onClick={togglePointCloud}
           />
         )}
+=======
+>>>>>>> a7fa4881b7f5a72e336bbc860b972c2ebd5be565
       </div>
 
       <div className="flex flex-col gap-1 p-1.5 w-full">
