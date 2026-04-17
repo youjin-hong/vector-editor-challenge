@@ -1,11 +1,11 @@
-export type { Coordinate, PointShape, PolygonShape, Shape, EditorMode } from './model/types';
-export { EDITOR_MODES } from './model/types';
+export type { Coordinate, PointShape, PolygonShape, Shape, EditorMode, ViewMode } from './model/types';
 export {
-  distance,
-  isPointInCircle,
-  isPointInPolygon,
-  isPointOnPolygonEdge,
-  calculatePolygonCenter,
   findShapeAtPoint,
   clampToCanvas,
 } from './lib/geometry';
+export {
+  generateSphereCloud,
+  generateTerrainCloud,
+  generateBuildingCloud,
+  generateColorArray,
+} from './lib/pointCloudGenerator';

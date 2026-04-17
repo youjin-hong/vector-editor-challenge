@@ -19,3 +19,5 @@ export type Shape = PointShape | PolygonShape;
 
 export const EDITOR_MODES = ['point', 'polygon', 'move', 'delete'] as const;
 export type EditorMode = (typeof EDITOR_MODES)[number];
+
+export type ViewMode = '2d' | '3d';
