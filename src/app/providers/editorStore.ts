@@ -1,10 +1,11 @@
 import { create } from 'zustand';
-import type { Shape, Coordinate, EditorMode } from '@/entities/shape';
+import type { Shape, Coordinate, EditorMode, ViewMode } from '@/entities/shape';
 import type { Command } from '@/shared/types';
 import { HistoryManager } from '@/features/history';
 import { CreatePolygonCommand } from '@/features/create-shape';
 import { generateId } from '@/shared/lib/generateId';
 import { MIN_POLYGON_VERTICES, FEEDBACK_MESSAGE_TIMEOUT } from '@/shared/config/constants';
+import { POINT_CLOUD_SIZE } from '@/shared/config/three-constants';
 
 const historyManager = new HistoryManager();
 
@@ -28,6 +29,9 @@ interface EditorState {
   feedbackMessage: string | null;
   canUndo: boolean;
   canRedo: boolean;
+  viewMode: ViewMode;
+  pointCloudVisible: boolean;
+  pointSize: number;
 
   setMode: (mode: EditorMode) => void;
   addShape: (shape: Shape) => void;
@@ -41,6 +45,9 @@ interface EditorState {
   redo: () => void;
   setFeedbackMessage: (message: string | null) => void;
   cancelCurrentAction: () => void;
+  setViewMode: (mode: ViewMode) => void;
+  togglePointCloud: () => void;
+  setPointSize: (size: number) => void;
 }
 
 export const useEditorStore = create<EditorState>((set, get) => ({
@@ -51,6 +58,9 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   feedbackMessage: MODE_MESSAGES.point,
   canUndo: false,
   canRedo: false,
+  viewMode: '2d',
+  pointCloudVisible: true,
+  pointSize: POINT_CLOUD_SIZE,
 
   setMode: (mode) => {
     set({
@@ -162,5 +172,17 @@ export const useEditorStore = create<EditorState>((set, get) => ({
         feedbackMessage: MODE_MESSAGES[state.mode],
       });
     }
+  },
+
+  setViewMode: (viewMode) => {
+    set({ viewMode });
+  },
+
+  togglePointCloud: () => {
+    set((state) => ({ pointCloudVisible: !state.pointCloudVisible }));
+  },
+
+  setPointSize: (pointSize) => {
+    set({ pointSize });
   },
 }));

@@ -1,4 +1,5 @@
-import { Circle, Pentagon, Move, Trash2, Undo2, Redo2 } from 'lucide-react';
+import type { JSX } from 'react';
+import { Circle, Pentagon, Move, Trash2, Undo2, Redo2, Box, Cloud } from 'lucide-react';
 import type { EditorMode } from '@/entities/shape';
 import { useEditorStore } from '@/app/providers/editorStore';
 import { Tooltip } from '@/shared/ui/Tooltip';
@@ -21,11 +22,33 @@ export const Toolbar = (): JSX.Element => {
   const redo = useEditorStore((s) => s.redo);
   const completePolygon = useEditorStore((s) => s.completePolygon);
   const pendingVertices = useEditorStore((s) => s.pendingVertices);
+  const viewMode = useEditorStore((s) => s.viewMode);
+  const setViewMode = useEditorStore((s) => s.setViewMode);
+  const pointCloudVisible = useEditorStore((s) => s.pointCloudVisible);
+  const togglePointCloud = useEditorStore((s) => s.togglePointCloud);
 
   return (
     <div className="fixed left-0 top-0 bottom-9 w-14 bg-editor-surface border-r border-editor-border flex flex-col items-center z-10">
       <div className="py-3 px-2 border-b border-editor-border w-full text-center">
-        <span className="text-editor-accent font-bold text-sm tracking-tight">VectoR</span>
+        <span className="text-editor-accent font-bold text-sm tracking-tight">Vector Editor</span>
+      </div>
+
+      {/* 2D/3D 뷰 전환 */}
+      <div className="flex flex-col gap-1 p-1.5 w-full border-b border-editor-border">
+        <ToolButton
+          icon={Box}
+          label={viewMode === '3d' ? '2D View' : '3D View'}
+          isActive={viewMode === '3d'}
+          onClick={() => setViewMode(viewMode === '3d' ? '2d' : '3d')}
+        />
+        {viewMode === '3d' && (
+          <ToolButton
+            icon={Cloud}
+            label="Point Cloud"
+            isActive={pointCloudVisible}
+            onClick={togglePointCloud}
+          />
+        )}
       </div>
 
       <div className="flex flex-col gap-1 p-1.5 w-full">

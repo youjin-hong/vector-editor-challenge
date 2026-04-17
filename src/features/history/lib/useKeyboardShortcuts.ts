@@ -7,6 +7,7 @@ interface UseKeyboardShortcutsParams {
   redo: () => void;
   completePolygon: () => void;
   cancelCurrentAction: () => void;
+  toggleViewMode?: () => void;
 }
 
 export const useKeyboardShortcuts = ({
@@ -15,6 +16,7 @@ export const useKeyboardShortcuts = ({
   redo,
   completePolygon,
   cancelCurrentAction,
+  toggleViewMode,
 }: UseKeyboardShortcutsParams): void => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent): void => {
@@ -50,10 +52,14 @@ export const useKeyboardShortcuts = ({
         case 'Escape':
           cancelCurrentAction();
           break;
+        case 'v':
+        case 'V':
+          toggleViewMode?.();
+          break;
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [setMode, undo, redo, completePolygon, cancelCurrentAction]);
+  }, [setMode, undo, redo, completePolygon, cancelCurrentAction, toggleViewMode]);
 };
