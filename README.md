@@ -1,10 +1,6 @@
 # Interactive Vector Editor
 
-<<<<<<< HEAD
 브라우저 기반 인터랙티브 벡터 편집기입니다. 캔버스 위에서 점(Point)과 다각형(Polygon)을 생성, 이동, 삭제하고, 모든 액션에 대해 Undo/Redo를 수행할 수 있습니다. 2D SVG 뷰와 Three.js 기반 3D Point Cloud 뷰를 실시간으로 전환할 수 있습니다.
-=======
-브라우저 기반 인터랙티브 벡터 편집기입니다. 캔버스 위에서 점(Point)과 다각형(Polygon)을 생성, 이동, 삭제하고, 모든 액션에 대해 Undo/Redo를 수행할 수 있습니다.
->>>>>>> a7fa4881b7f5a72e336bbc860b972c2ebd5be565
 
 ## 개발 환경
 
@@ -17,10 +13,7 @@
 - React 19 + TypeScript (strict mode)
 - Vite 6
 - Zustand 5 (상태 관리)
-<<<<<<< HEAD
 - **Three.js 0.184** + **@react-three/fiber 9** + **@react-three/drei 10** (3D 렌더링)
-=======
->>>>>>> a7fa4881b7f5a72e336bbc860b972c2ebd5be565
 - Vitest 3 + React Testing Library (테스트)
 - Tailwind CSS 4
 - Lucide React (아이콘)
@@ -105,10 +98,7 @@ Three.js + @react-three/fiber 기반 3D 뷰어로, 2D에서 생성한 shapes를 
 | `2`            | Polygon Mode     |
 | `3`            | Move Mode        |
 | `4`            | Delete Mode      |
-<<<<<<< HEAD
 | `V`            | 2D / 3D 뷰 전환  |
-=======
->>>>>>> a7fa4881b7f5a72e336bbc860b972c2ebd5be565
 | `Enter`        | Polygon Complete |
 | `Escape`       | 현재 작업 취소   |
 | `Ctrl+Z`       | Undo             |
