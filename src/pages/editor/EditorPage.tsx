@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-import { useCallback, type JSX } from 'react';
-=======
-import type { JSX } from 'react';
->>>>>>> a7fa4881b7f5a72e336bbc860b972c2ebd5be565
-import { useEditorStore } from '@/app/providers/editorStore';
-import { useKeyboardShortcuts } from '@/features/history';
-import { Toolbar } from '@/widgets/toolbar';
-import { Canvas } from '@/widgets/canvas';
-import { ThreeCanvas } from '@/widgets/three-canvas';
-import { StatusBar } from '@/widgets/status-bar';
+import { useCallback, type JSX } from "react";
+import { useEditorStore } from "@/app/providers/editorStore";
+import { useKeyboardShortcuts } from "@/features/history";
+import { Toolbar } from "@/widgets/toolbar";
+import { Canvas } from "@/widgets/canvas";
+import { ThreeCanvas } from "@/widgets/three-canvas";
+import { StatusBar } from "@/widgets/status-bar";
 
 export const EditorPage = (): JSX.Element => {
   const setMode = useEditorStore((s) => s.setMode);
@@ -20,7 +16,7 @@ export const EditorPage = (): JSX.Element => {
   const setViewMode = useEditorStore((s) => s.setViewMode);
 
   const toggleViewMode = useCallback((): void => {
-    setViewMode(viewMode === '2d' ? '3d' : '2d');
+    setViewMode(viewMode === "2d" ? "3d" : "2d");
   }, [viewMode, setViewMode]);
 
   useKeyboardShortcuts({
@@ -35,7 +31,7 @@ export const EditorPage = (): JSX.Element => {
   return (
     <div className="w-screen h-screen bg-editor-bg flex overflow-hidden">
       <Toolbar />
-      {viewMode === '2d' ? <Canvas /> : <ThreeCanvas />}
+      {viewMode === "2d" ? <Canvas /> : <ThreeCanvas />}
       <StatusBar />
     </div>
   );

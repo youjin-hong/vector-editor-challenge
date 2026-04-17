@@ -1,10 +1,10 @@
-<<<<<<< HEAD
-import { useState, useEffect, useRef, useCallback, type JSX } from 'react';
-=======
-import { useState, useEffect, useRef, type JSX } from 'react';
->>>>>>> a7fa4881b7f5a72e336bbc860b972c2ebd5be565
-import { useEditorStore } from '@/app/providers/editorStore';
-import { TOOLBAR_WIDTH, STATUS_BAR_HEIGHT, MODE_LABELS } from '@/shared/config/constants';
+import { useState, useEffect, useRef, useCallback, type JSX } from "react";
+import { useEditorStore } from "@/app/providers/editorStore";
+import {
+  TOOLBAR_WIDTH,
+  STATUS_BAR_HEIGHT,
+  MODE_LABELS,
+} from "@/shared/config/constants";
 
 export const StatusBar = (): JSX.Element => {
   const mode = useEditorStore((s) => s.mode);
@@ -26,9 +26,9 @@ export const StatusBar = (): JSX.Element => {
         });
       });
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(rafId.current);
     };
   }, []);
@@ -53,7 +53,7 @@ export const StatusBar = (): JSX.Element => {
           <span className="w-1.5 h-1.5 rounded-full bg-editor-accent" />
           {MODE_LABELS[mode]}
         </span>
-        {viewMode === '3d' && (
+        {viewMode === "3d" && (
           <span className="inline-flex items-center px-2 py-0.5 rounded bg-editor-surface-hover text-editor-secondary font-mono">
             Shapes: {shapes.length}
           </span>
@@ -61,7 +61,7 @@ export const StatusBar = (): JSX.Element => {
         <span className="text-editor-secondary">{feedbackMessage}</span>
       </div>
       <div className="flex items-center gap-3">
-        {viewMode === '3d' && (
+        {viewMode === "3d" && (
           <div className="flex items-center gap-2 text-editor-muted">
             <span className="text-editor-secondary">Point Size</span>
             <input
@@ -73,14 +73,16 @@ export const StatusBar = (): JSX.Element => {
               onChange={handlePointSizeChange}
               className="w-20 h-1 accent-editor-accent"
             />
-            <span className="font-mono w-8 text-right">{pointSize.toFixed(2)}</span>
+            <span className="font-mono w-8 text-right">
+              {pointSize.toFixed(2)}
+            </span>
           </div>
         )}
         <div className="flex items-center gap-2 text-editor-muted font-mono">
           <span>X: {mousePos.x}</span>
           <span>|</span>
           <span>Y: {mousePos.y}</span>
-          {viewMode === '3d' && (
+          {viewMode === "3d" && (
             <>
               <span>|</span>
               <span>Z: 0</span>
