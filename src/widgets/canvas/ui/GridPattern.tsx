@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import { GRID_SPACING, GRID_DOT_RADIUS, COLORS } from '@/shared/config/constants';
 
 interface GridPatternProps {

@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import type { PointShape } from '@/entities/shape';
 import { POINT_RADIUS, POINT_HOVER_RADIUS, COLORS } from '@/shared/config/constants';
 

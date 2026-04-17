@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { Toolbar } from '../ui/Toolbar';
 import { useEditorStore } from '@/app/providers/editorStore';
 
@@ -56,7 +56,9 @@ describe('Toolbar', () => {
     const { rerender } = render(<Toolbar />);
     expect(screen.queryByText('Done')).not.toBeInTheDocument();
 
-    useEditorStore.setState({ mode: 'polygon' });
+    act(() => {
+      useEditorStore.setState({ mode: 'polygon' });
+    });
     rerender(<Toolbar />);
     expect(screen.getByText('Done')).toBeInTheDocument();
   });

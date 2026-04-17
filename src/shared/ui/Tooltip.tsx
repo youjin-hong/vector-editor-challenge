@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, type JSX } from 'react';
 
 interface TooltipProps {
   label: string;
@@ -19,7 +19,7 @@ export const Tooltip = ({ label, shortcut, children }: TooltipProps): JSX.Elemen
           shadow-[0_4px_12px_rgba(0,0,0,0.4)]
         "
       >
-        {/* Arrow */}
+        {/* 화살표 */}
         <span
           className="absolute -left-1 top-1/2 -translate-y-1/2 w-2 h-2 rotate-45
             bg-editor-surface border-l border-b border-editor-border"
